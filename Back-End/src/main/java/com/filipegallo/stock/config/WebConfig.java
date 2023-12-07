@@ -1,4 +1,4 @@
-package com.filipegallo.estoque.config;
+package com.filipegallo.stock.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
