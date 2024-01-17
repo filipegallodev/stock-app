@@ -13,6 +13,10 @@ const Input = ({ id, type = "text", ...args }: IProps) => {
 
 const StyledInput = styled.input`
   display: block;
+  font-size: 1.125rem;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 8px 12px;
 `;
 
 export default Input;

@@ -1,13 +1,11 @@
 "use client";
 
-import LoginCard from "@/components/Login/LoginCard";
 import styled from "styled-components";
 
-export default function Login() {
+export default function Home() {
   return (
     <Main>
-      <MainTitle>Seja bem-vindo ao StockApp!</MainTitle>
-      <LoginCard />
+      <MainTitle>StockApp! Página Inicial</MainTitle>
     </Main>
   );
 }

@@ -7,6 +7,7 @@ const Label = ({ text, id }: { text: string; id: string }) => {
 
 const LabelInput = styled.label`
   display: block;
+  font-size: 1.25rem;
 `;
 
 export default Label;
