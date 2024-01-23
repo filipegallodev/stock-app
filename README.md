@@ -1,5 +1,5 @@
-# Controle de Estoque
+# 📦 StockApp - Controle de Estoque
 > Mais informações em breve
 > 
-## Objetivo
-Desenvolver uma aplicação web Full-Stack de controle de estoque.
+## 🎯 Objetivo
+Aplicação web com o objetivo de controlar o estoque de uma loja virtual.
