@@ -4,7 +4,6 @@ import br.com.filipe.backendstockapp.v1.dto.ProductDTO;
 import br.com.filipe.backendstockapp.v1.exception.ProductNotFoundException;
 import br.com.filipe.backendstockapp.v1.model.Product;
 import br.com.filipe.backendstockapp.v1.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,8 +12,7 @@ import java.util.Optional;
 @Service
 public class ProductService {
 
-    @Autowired
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;

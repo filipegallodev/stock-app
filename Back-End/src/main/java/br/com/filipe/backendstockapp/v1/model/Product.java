@@ -2,13 +2,15 @@ package br.com.filipe.backendstockapp.v1.model;
 
 import jakarta.persistence.*;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "product")
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     private String name;
     private Integer amount;
@@ -16,13 +18,12 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, String name, Integer amount) {
-        this.id = id;
+    public Product(String name, Integer amount) {
         this.name = name;
         this.amount = amount;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
