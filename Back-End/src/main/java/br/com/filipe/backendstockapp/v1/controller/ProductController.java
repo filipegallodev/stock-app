@@ -29,8 +29,7 @@ public class ProductController {
         } catch (ProductNotFoundException e) {
             ErrorResponse errorResponse = new ErrorResponse(
                     HttpStatus.NOT_FOUND.value(),
-                    e.getMessage(),
-                    LocalDateTime.now());
+                    e.getMessage());
 
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
         }

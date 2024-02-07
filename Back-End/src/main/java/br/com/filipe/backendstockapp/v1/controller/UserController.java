@@ -1,5 +1,6 @@
 package br.com.filipe.backendstockapp.v1.controller;
 
+import br.com.filipe.backendstockapp.v1.dto.UserDTO;
 import br.com.filipe.backendstockapp.v1.model.User;
 import br.com.filipe.backendstockapp.v1.response.ErrorResponse;
 import br.com.filipe.backendstockapp.v1.service.UserService;
@@ -27,10 +28,15 @@ public class UserController {
         } catch (Exception e) {
             ErrorResponse errorResponse = new ErrorResponse(
                     HttpStatus.BAD_REQUEST.value(),
-                    e.getMessage(),
-                    LocalDateTime.now());
+                    e.getMessage());
 
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
         }
+    }
+
+    @PostMapping(value = "/login")
+    public ResponseEntity<UserDTO> login(@RequestBody User user) {
+        UserDTO userDTO = userService.loginUser(user);
+        return ResponseEntity.status(HttpStatus.OK).body(userDTO);
     }
 }
