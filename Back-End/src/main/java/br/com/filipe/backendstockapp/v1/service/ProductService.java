@@ -1,7 +1,9 @@
 package br.com.filipe.backendstockapp.v1.service;
 
 import br.com.filipe.backendstockapp.v1.dto.ProductDTO;
-import br.com.filipe.backendstockapp.v1.exception.NoRegisteredProducts;
+import br.com.filipe.backendstockapp.v1.exception.NoRegisteredProductsException;
+import br.com.filipe.backendstockapp.v1.exception.ProductIDAlreadyExistsException;
+import br.com.filipe.backendstockapp.v1.exception.ProductNameAlreadyExistsException;
 import br.com.filipe.backendstockapp.v1.exception.ProductNotFoundException;
 import br.com.filipe.backendstockapp.v1.model.Product;
 import br.com.filipe.backendstockapp.v1.repository.ProductRepository;
@@ -21,32 +23,49 @@ public class ProductService {
     }
 
     @Transactional(readOnly = true)
-    public ProductDTO findById(Long id) {
-        Optional<Product> res = productRepository.findById(id);
-        verifyIfProductExists(res);
-        return new ProductDTO(res.get());
+    public ProductDTO findById(String customId) {
+        Optional<Product> result = productRepository.findByCustomId(customId);
+        verifyIfSearchedProductExists(result);
+        return new ProductDTO(result.get());
     }
 
     @Transactional(readOnly = true)
     public List<ProductDTO> findAllProducts() {
-        List<Product> res = productRepository.findAll();
-        verifyIfListIsEmpty(res);
-        return res.stream().map(ProductDTO::new).toList();
+        List<Product> result = productRepository.findAll();
+        verifyIfListIsEmpty(result);
+        return result.stream().map(ProductDTO::new).toList();
     }
 
     public void addProduct(Product product) {
+        verifyIfRegisteringProductExists(product);
         productRepository.save(product);
     }
 
-    public void verifyIfProductExists(Optional<Product> res) {
-        if (!res.isPresent()) {
+    public void verifyIfSearchedProductExists(Optional<Product> result) {
+        if (!result.isPresent()) {
             throw new ProductNotFoundException();
         }
     }
 
-    public void verifyIfListIsEmpty(List<Product> res) {
-        if (res.isEmpty()) {
-            throw new NoRegisteredProducts();
+    public void verifyIfRegisteringProductExists(Product product) {
+        Optional<Product> result = productRepository.findByCustomId(product.getCustomId());
+        registeringProductExists(result, "id");
+        result = productRepository.findByName(product.getName());
+        registeringProductExists(result, "name");
+    }
+
+    public void registeringProductExists(Optional<Product> result, String findBy) {
+        if (result.isPresent() && findBy.equals("id")) {
+            throw new ProductIDAlreadyExistsException();
+        }
+        if (result.isPresent() && findBy.equals("name")) {
+            throw new ProductNameAlreadyExistsException();
+        }
+    }
+
+    public void verifyIfListIsEmpty(List<Product> result) {
+        if (result.isEmpty()) {
+            throw new NoRegisteredProductsException();
         }
     }
 }

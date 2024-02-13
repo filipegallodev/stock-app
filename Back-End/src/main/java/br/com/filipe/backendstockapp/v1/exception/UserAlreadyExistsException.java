@@ -1,8 +1,8 @@
 package br.com.filipe.backendstockapp.v1.exception;
 
-public class UserAlreadyExists extends RuntimeException {
+public class UserAlreadyExistsException extends RuntimeException {
 
-    public UserAlreadyExists() {
+    public UserAlreadyExistsException() {
         super("Este nome de usuário já está em uso!");
     }
 }

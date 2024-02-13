@@ -1,8 +1,8 @@
 package br.com.filipe.backendstockapp.v1.exception;
 
-public class NoRegisteredProducts extends RuntimeException{
+public class NoRegisteredProductsException extends RuntimeException{
 
-    public NoRegisteredProducts() {
+    public NoRegisteredProductsException() {
         super("Não existe produtos cadastrados.");
     }
 }

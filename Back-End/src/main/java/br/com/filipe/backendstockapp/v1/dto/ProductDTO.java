@@ -6,6 +6,7 @@ import org.springframework.beans.BeanUtils;
 public class ProductDTO {
 
     private Long id;
+    private String customId;
     private String name;
     private Integer amount;
 
@@ -18,6 +19,10 @@ public class ProductDTO {
 
     public Long getId() {
         return id;
+    }
+
+    public String getCustomId() {
+        return customId;
     }
 
     public String getName() {

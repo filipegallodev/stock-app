@@ -12,19 +12,26 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @Column(name = "custom_id")
+    private String customId;
     private String name;
     private Integer amount;
 
     public Product() {
     }
 
-    public Product(String name, Integer amount) {
+    public Product(String customId, String name, Integer amount) {
+        this.customId = customId;
         this.name = name;
         this.amount = amount;
     }
 
     public UUID getId() {
         return id;
+    }
+
+    public String getCustomId() {
+        return customId;
     }
 
     public String getName() {

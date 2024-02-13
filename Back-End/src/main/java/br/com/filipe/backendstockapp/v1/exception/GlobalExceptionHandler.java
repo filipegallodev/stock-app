@@ -15,8 +15,8 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 
-    @ExceptionHandler(UserAlreadyExists.class)
-    public ResponseEntity<ErrorResponse> handleUserAlreadyExists(UserAlreadyExists ex) {
+    @ExceptionHandler(UserAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponse> handleUserAlreadyExistsException(UserAlreadyExistsException ex) {
         ErrorResponse errorResponse = new ErrorResponse(HttpStatus.CONFLICT.value(), ex.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
     }
@@ -33,8 +33,20 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 
-    @ExceptionHandler(NoRegisteredProducts.class)
-    public ResponseEntity<ErrorResponse> handleNoRegisteredProducts(NoRegisteredProducts ex) {
+    @ExceptionHandler(ProductIDAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponse> handleProductAlreadyExistsException(ProductIDAlreadyExistsException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.CONFLICT.value(), ex.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
+    }
+
+    @ExceptionHandler(ProductNameAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponse> handleProductNameAlreadyExistsException(ProductNameAlreadyExistsException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
+
+    @ExceptionHandler(NoRegisteredProductsException.class)
+    public ResponseEntity<ErrorResponse> handleNoRegisteredProductsException(NoRegisteredProductsException ex) {
         ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }

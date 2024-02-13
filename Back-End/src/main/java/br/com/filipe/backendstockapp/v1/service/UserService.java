@@ -2,7 +2,7 @@ package br.com.filipe.backendstockapp.v1.service;
 
 import br.com.filipe.backendstockapp.v1.dto.UserDTO;
 import br.com.filipe.backendstockapp.v1.exception.PasswordNotMatchesException;
-import br.com.filipe.backendstockapp.v1.exception.UserAlreadyExists;
+import br.com.filipe.backendstockapp.v1.exception.UserAlreadyExistsException;
 import br.com.filipe.backendstockapp.v1.exception.UserNotFoundException;
 import br.com.filipe.backendstockapp.v1.model.User;
 import br.com.filipe.backendstockapp.v1.repository.UserRepository;
@@ -41,7 +41,7 @@ public class UserService {
             throw new UserNotFoundException();
         }
         if (result != null && transactionType.equals("register")) {
-            throw new UserAlreadyExists();
+            throw new UserAlreadyExistsException();
         }
     }
 
