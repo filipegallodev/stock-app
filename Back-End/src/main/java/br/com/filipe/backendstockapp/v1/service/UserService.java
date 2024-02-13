@@ -2,6 +2,7 @@ package br.com.filipe.backendstockapp.v1.service;
 
 import br.com.filipe.backendstockapp.v1.dto.UserDTO;
 import br.com.filipe.backendstockapp.v1.exception.PasswordNotMatchesException;
+import br.com.filipe.backendstockapp.v1.exception.UserAlreadyExists;
 import br.com.filipe.backendstockapp.v1.exception.UserNotFoundException;
 import br.com.filipe.backendstockapp.v1.model.User;
 import br.com.filipe.backendstockapp.v1.repository.UserRepository;
@@ -21,6 +22,8 @@ public class UserService {
     }
 
     public void registerUser(User user) {
+        User result = userRepository.findByUsername(user.getUsername());
+        userExists(result, "register");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
@@ -28,14 +31,17 @@ public class UserService {
     @Transactional(readOnly = true)
     public UserDTO loginUser(User user) {
         User result = userRepository.findByUsername(user.getUsername());
-        userExists(result);
+        userExists(result, "login");
         passwordMatches(user, result);
         return new UserDTO(result);
     }
 
-    public void userExists(User result) {
-        if (result == null) {
+    public void userExists(User result, String transactionType) {
+        if (result == null && transactionType.equals("login")) {
             throw new UserNotFoundException();
+        }
+        if (result != null && transactionType.equals("register")) {
+            throw new UserAlreadyExists();
         }
     }
 
