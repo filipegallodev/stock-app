@@ -20,7 +20,7 @@ public class ProductController {
     }
 
     @GetMapping(value = "/{customId}")
-    public ResponseEntity<?> findProductById(@PathVariable String customId) {
+    public ResponseEntity<ProductDTO> findProductById(@PathVariable String customId) {
         ProductDTO result = productService.findById(customId);
         return ResponseEntity.ok(result);
     }
