@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value ="/products")
+@RequestMapping(value ="/product")
 public class ProductController {
 
     private final ProductService productService;
@@ -21,18 +21,24 @@ public class ProductController {
 
     @GetMapping(value = "/{customId}")
     public ResponseEntity<ProductDTO> findProductById(@PathVariable String customId) {
-        ProductDTO result = productService.findById(customId);
+        ProductDTO result = productService.findByCustomId(customId);
         return ResponseEntity.ok(result);
     }
 
     @GetMapping(value = "/list")
     public ResponseEntity<List<ProductDTO>> findAllProducts() {
-        List<ProductDTO> productDTO = productService.findAllProducts();
-        return ResponseEntity.status(HttpStatus.OK).body(productDTO);
+        List<ProductDTO> listProductDTO = productService.findAllProducts();
+        return ResponseEntity.status(HttpStatus.OK).body(listProductDTO);
     }
 
-    @PostMapping(value = "/addProduct")
-    public void addProduct(@RequestBody Product product) {
-        productService.addProduct(product);
+    @PostMapping(value = "/create")
+    public void createProduct(@RequestBody Product product) {
+        productService.createProduct(product);
+    }
+
+    @DeleteMapping(value = "/delete/{customId}")
+    public ResponseEntity<HttpStatus> deleteProduct(@PathVariable String customId) {
+        productService.deleteProduct(customId);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

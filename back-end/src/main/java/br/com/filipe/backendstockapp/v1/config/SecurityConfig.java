@@ -43,11 +43,9 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
-                        authorizationManagerRequestMatcherRegistry.requestMatchers(HttpMethod.DELETE).hasRole("ADMIN")
-                                .requestMatchers("/user/register").permitAll()
-                                .requestMatchers("/user/login").permitAll()
-                                .requestMatchers("/products/list").permitAll()
-                                .requestMatchers("/products/addProduct").permitAll()
+                        authorizationManagerRequestMatcherRegistry.requestMatchers(HttpMethod.DELETE).permitAll()
+                                .requestMatchers("/user/*").permitAll()
+                                .requestMatchers("/product/*").permitAll()
                                 .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS));

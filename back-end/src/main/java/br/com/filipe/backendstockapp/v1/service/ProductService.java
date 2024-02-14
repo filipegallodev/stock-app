@@ -7,6 +7,7 @@ import br.com.filipe.backendstockapp.v1.exception.ProductNameAlreadyExistsExcept
 import br.com.filipe.backendstockapp.v1.exception.ProductNotFoundException;
 import br.com.filipe.backendstockapp.v1.model.Product;
 import br.com.filipe.backendstockapp.v1.repository.ProductRepository;
+import org.hibernate.sql.Delete;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,10 +24,9 @@ public class ProductService {
     }
 
     @Transactional(readOnly = true)
-    public ProductDTO findById(String customId) {
-        Optional<Product> result = productRepository.findByCustomId(customId);
-        verifyIfSearchedProductExists(result);
-        return new ProductDTO(result.get());
+    public ProductDTO findByCustomId(String customId) {
+        Product product = verifyIfProductExists(customId);
+        return new ProductDTO(product);
     }
 
     @Transactional(readOnly = true)
@@ -36,15 +36,22 @@ public class ProductService {
         return result.stream().map(ProductDTO::new).toList();
     }
 
-    public void addProduct(Product product) {
+    public void createProduct(Product product) {
         verifyIfRegisteringProductExists(product);
         productRepository.save(product);
     }
 
-    public void verifyIfSearchedProductExists(Optional<Product> result) {
-        if (!result.isPresent()) {
+    public void deleteProduct(String customId) {
+        Product product = verifyIfProductExists(customId);
+        productRepository.delete(product);
+    }
+
+    public Product verifyIfProductExists(String customId) {
+        Optional<Product> result = productRepository.findByCustomId(customId);
+        if (result.isEmpty()) {
             throw new ProductNotFoundException();
         }
+        return result.get();
     }
 
     public void verifyIfRegisteringProductExists(Product product) {
