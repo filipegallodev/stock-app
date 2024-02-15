@@ -6,10 +6,12 @@ import styled from "styled-components";
 
 export default function Login() {
   return (
-    <Main>
+    <>
       <Header />
-      <LoginCard />
-    </Main>
+      <Main>
+        <LoginCard />
+      </Main>
+    </>
   );
 }
 

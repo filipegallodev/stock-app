@@ -3,6 +3,8 @@ import styled from "styled-components";
 import * as Styled from "../styles/Button.styled";
 import { useRouter } from "next/navigation";
 import { loginUser } from "@/functions/Authentication";
+import { InputBox, StyledForm, StyledInput, StyledLabel } from "../styles/Form.styled";
+import { StyledButton } from "../styles/Button.styled";
 
 const LoginCard = () => {
   const [login, setLogin] = useState<Login>({ username: "", password: "" });
@@ -46,16 +48,16 @@ const LoginCard = () => {
 
   return (
     <Card>
-      <form>
-        <div>
+      <StyledForm>
+        <InputBox>
           <StyledLabel htmlFor="username">Usuário</StyledLabel>
           <StyledInput
             id="username"
             value={login.username}
             onChange={(event) => assignLoginValue(event, "username")}
           />
-        </div>
-        <div>
+        </InputBox>
+        <InputBox>
           <StyledLabel htmlFor="password">Senha</StyledLabel>
           <StyledInput
             id="password"
@@ -64,10 +66,10 @@ const LoginCard = () => {
             value={login.password}
             onChange={(event) => assignLoginValue(event, "password")}
           />
-        </div>
-      </form>
+        </InputBox>
+      </StyledForm>
       {warning !== "" ? <p>{warning}</p> : ""}
-      <Styled.Button onClick={realizeLogin}>Entrar</Styled.Button>
+      <StyledButton onClick={realizeLogin}>Entrar</StyledButton>
     </Card>
   );
 };
@@ -86,20 +88,6 @@ const Card = styled.div`
   border-radius: 10px;
   box-shadow: 0px 0px 8px #00000025;
   color: #222;
-`;
-
-const StyledLabel = styled.label`
-  display: block;
-  font-size: 1.25rem;
-`;
-
-const StyledInput = styled.input`
-  display: block;
-  margin-bottom: 32px;
-  font-size: 1.125rem;
-  border: 1px solid black;
-  border-radius: 4px;
-  padding: 8px 12px;
 `;
 
 export default LoginCard;
