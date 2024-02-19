@@ -46,6 +46,7 @@ public class SecurityConfig {
                         authorizationManagerRequestMatcherRegistry.requestMatchers(HttpMethod.DELETE).permitAll()
                                 .requestMatchers("/user/*").permitAll()
                                 .requestMatchers("/product/*").permitAll()
+                                .requestMatchers("/sale").permitAll()
                                 .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
