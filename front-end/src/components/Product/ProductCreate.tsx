@@ -7,7 +7,6 @@ import {
 } from "../styles/Form.styled";
 import { StyledButton } from "../styles/Button.styled";
 import { createProduct } from "@/functions/Product";
-import styled from "styled-components";
 import { Section, SectionTitle } from "../styles/Section.styled";
 
 const defaultProductValues = {

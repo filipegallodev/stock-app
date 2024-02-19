@@ -1,4 +1,4 @@
-import React, { MouseEvent, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { loginUser } from "@/functions/Authentication";
 import {
@@ -11,28 +11,24 @@ import {
 } from "../styles/Form.styled";
 import { StyledButton } from "../styles/Button.styled";
 
-const LoginCard = () => {
-  const [login, setLogin] = useState<Login>({ username: "", password: "" });
-  const [logged, setLogged] = useState(false);
+const RegisterCard = () => {
+  const [register, setRegister] = useState<Register>({
+    username: "",
+    password: "",
+  });
   const [warning, setWarning] = useState("");
-  const router = useRouter();
 
-  useEffect(() => {
-    if (logged) router.push("/home");
-  }, [logged, router]);
-
-  async function realizeLogin(event: MouseEvent) {
+  async function realizeRegistration(event: MouseEvent) {
     event.preventDefault();
     if (!verifyIfFieldsHaveContent()) return;
-    setLogged(await loginUser(login));
   }
 
   function verifyIfFieldsHaveContent(): boolean {
-    if (login.username === "") {
+    if (register.username === "") {
       setWarning("Preencha o usuário!");
       return false;
     }
-    if (login.password === "") {
+    if (register.password === "") {
       setWarning("Preencha a senha!");
       return false;
     }
@@ -40,27 +36,27 @@ const LoginCard = () => {
     return true;
   }
 
-  function assignLoginValue(
+  function assignRegisterValue(
     event: React.ChangeEvent<HTMLInputElement>,
     type: string
   ) {
     if (type === "username") {
-      return setLogin({ ...login, username: event.target.value });
+      return setRegister({ ...register, username: event.target.value });
     }
     if (type === "password") {
-      return setLogin({ ...login, password: event.target.value });
+      return setRegister({ ...register, password: event.target.value });
     }
   }
 
   return (
     <FormContainer>
-      <FormTitle>Realize seu Login!</FormTitle>
+      <FormTitle>Cadastre-se!</FormTitle>
       <StyledForm>
         <InputBox>
           <StyledInput
             id="username"
-            value={login.username}
-            onChange={(event) => assignLoginValue(event, "username")}
+            value={register.username}
+            onChange={(event) => assignRegisterValue(event, "username")}
             placeholder="Usuário"
           />
         </InputBox>
@@ -69,16 +65,16 @@ const LoginCard = () => {
             id="password"
             type="password"
             maxLength={16}
-            value={login.password}
-            onChange={(event) => assignLoginValue(event, "password")}
-            placeholder="Senha"
+            value={register.password}
+            onChange={(event) => assignRegisterValue(event, "password")}
+            placeholder="Nova senha"
           />
         </InputBox>
-        <StyledButton onClick={realizeLogin}>Entrar</StyledButton>
-        {warning !== "" ? <Warning>{warning}</Warning> : null}
+        <StyledButton onClick={realizeRegistration}>Registrar</StyledButton>
+        {warning !== "" ? <Warning>{warning}</Warning> : ""}
       </StyledForm>
     </FormContainer>
   );
 };
 
-export default LoginCard;
+export default RegisterCard;
