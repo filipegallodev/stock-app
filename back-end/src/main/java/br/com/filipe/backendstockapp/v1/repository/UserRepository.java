@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query(nativeQuery = true, value = """
-                                        SELECT ID, USERNAME, PASSWORD_HASH
+                                        SELECT ID, USERNAME, NAME, PASSWORD_HASH
                                         FROM USERS
                                         WHERE USERNAME = :username
                                         """)
