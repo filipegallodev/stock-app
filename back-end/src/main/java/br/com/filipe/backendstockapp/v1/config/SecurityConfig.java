@@ -47,6 +47,7 @@ public class SecurityConfig {
                                 .requestMatchers("/user/*").permitAll()
                                 .requestMatchers("/product/*").permitAll()
                                 .requestMatchers("/sale").permitAll()
+                                .requestMatchers("/sale/*").permitAll()
                                 .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
