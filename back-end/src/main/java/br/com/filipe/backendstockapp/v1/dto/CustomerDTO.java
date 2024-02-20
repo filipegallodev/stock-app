@@ -1,30 +1,22 @@
-package br.com.filipe.backendstockapp.v1.model;
+package br.com.filipe.backendstockapp.v1.dto;
 
-import jakarta.persistence.*;
+import br.com.filipe.backendstockapp.v1.model.Customer;
+import org.springframework.beans.BeanUtils;
 
 import java.util.UUID;
 
-@Entity
-@Table(name = "users")
-public class User {
+public class CustomerDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-
     private String username;
-
-    @Column(name = "password_hash")
     private String password;
     private String name;
 
-    public User() {
+    public CustomerDTO() {
     }
 
-    public User(String username, String password, String name) {
-        this.username = username;
-        this.password = password;
-        this.name = name;
+    public CustomerDTO(Customer model) {
+        BeanUtils.copyProperties(model, this);
     }
 
     public UUID getId() {
