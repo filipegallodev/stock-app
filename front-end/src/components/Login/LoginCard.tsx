@@ -53,7 +53,7 @@ const LoginCard = () => {
   }
 
   return (
-    <FormContainer>
+    <FormContainer className="animeLeft">
       <FormTitle>Realize seu Login!</FormTitle>
       <StyledForm>
         <InputBox>

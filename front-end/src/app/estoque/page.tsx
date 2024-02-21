@@ -12,7 +12,7 @@ export default function Estoque() {
   return (
     <>
       <Header />
-      <main>
+      <main className="animeLeft">
         <SectionSwapper>
           <SectionSwapperButton
             onClick={() => setAction("stock")}

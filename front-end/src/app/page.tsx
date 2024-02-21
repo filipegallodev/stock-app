@@ -13,7 +13,7 @@ export default function Login() {
   return (
     <>
       <Header />
-      <Main>
+      <Main className="animeLeft">
         <Container>
           {action === "login" ? (
             <div>

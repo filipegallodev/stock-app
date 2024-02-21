@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main>
+      <main className="animeLeft">
         <h1>Home</h1>
       </main>
     </>

@@ -49,7 +49,7 @@ const RegisterCard = () => {
   }
 
   return (
-    <FormContainer>
+    <FormContainer className="animeLeft">
       <FormTitle>Cadastre-se!</FormTitle>
       <StyledForm>
         <InputBox>
