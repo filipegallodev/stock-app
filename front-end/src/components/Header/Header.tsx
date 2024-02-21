@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import HeaderMenu from "./HeaderMenu";
 
 const Header = () => {
   return (
     <Container>
       <Content>
         <Title>StockApp!</Title>
+        <HeaderMenu />
       </Content>
     </Container>
   );
