@@ -15,5 +15,6 @@ export const SectionHeader = styled.div`
 `;
 
 export const SectionTitle = styled.h2`
-  font-size: 1.75rem;
+  font-size: 2rem;
+  font-weight: 500;
 `;
