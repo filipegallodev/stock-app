@@ -7,7 +7,7 @@ type Props = {
 
 const ProductCard = ({ product }: Props) => {
   return (
-    <Card>
+    <Card className="animeLeft">
       <Container>
         <ProductID>ID: {product.customId}</ProductID>
         <Content>
