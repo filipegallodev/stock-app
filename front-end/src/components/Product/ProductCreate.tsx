@@ -59,7 +59,7 @@ const ProductCreate = () => {
   }
 
   return (
-    <Section>
+    <Section className="animeLeft">
       <SectionHeader>
         <SectionTitle>Criação de Produto</SectionTitle>
       </SectionHeader>

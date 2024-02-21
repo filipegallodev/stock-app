@@ -19,7 +19,7 @@ const ProductList = () => {
   }
 
   return (
-    <Section>
+    <Section className="animeLeft">
       <SectionHeader>
         <SectionTitle>Controle de Estoque</SectionTitle>
         <ReloadButton onClick={getProducts}>Recarregar</ReloadButton>
@@ -41,7 +41,7 @@ const ProductList = () => {
 
 const ReloadButton = styled.button`
   background-color: #fff;
-  padding: 10px 24px;
+  padding: 8px 24px;
   border: none;
   box-shadow: 0px 0px 0px 2px #00000050;
   border-radius: 10px;

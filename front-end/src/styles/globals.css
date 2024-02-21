@@ -30,6 +30,20 @@ li {
   list-style: none;
 }
 
+/* Animation */
+.animeLeft {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: animeLeft 0.5s forwards;
+}
+
+@keyframes animeLeft {
+  to {
+    opacity: initial;
+    transform: initial;
+  }
+}
+
 /* Scrollbar */
 html {
   overflow-y: scroll;
