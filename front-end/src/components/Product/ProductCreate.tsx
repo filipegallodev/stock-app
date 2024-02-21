@@ -7,7 +7,7 @@ import {
 } from "../styles/Form.styled";
 import { StyledButton } from "../styles/Button.styled";
 import { createProduct } from "@/functions/Product";
-import { Section, SectionTitle } from "../styles/Section.styled";
+import { Section, SectionHeader, SectionTitle } from "../styles/Section.styled";
 
 const defaultProductValues = {
   id: null,
@@ -60,7 +60,9 @@ const ProductCreate = () => {
 
   return (
     <Section>
-      <SectionTitle>Criação de Produto</SectionTitle>
+      <SectionHeader>
+        <SectionTitle>Criação de Produto</SectionTitle>
+      </SectionHeader>
       <StyledForm>
         <InputBox>
           <StyledLabel htmlFor="custom-id">ID</StyledLabel>

@@ -4,7 +4,7 @@ import "@/styles/globals.css";
 
 export const metadata: Metadata = {
   title: "StockApp! - Faça seu login ou cadastre-se!",
-  description: "StockControl App - Aplicação para controle de estoque.",
+  description: "StockApp! - Aplicação para controle de estoque.",
 };
 
 export default function RootLayout({

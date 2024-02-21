@@ -35,26 +35,6 @@ const HeaderMenu = () => {
   );
 };
 
-const ButtonStyled = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 16px;
-  border-radius: 6px;
-  border: none;
-  background-color: #eee;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-  transition: 0.1s;
-  color: #000;
-  font-size: 1.25rem;
-  text-transform: capitalize;
-  cursor: pointer;
-  &:hover {
-    background-color: #fff;
-  }
-`;
-
 const NavContainer = styled.nav`
   @media (max-width: 800px) {
     width: 100%;

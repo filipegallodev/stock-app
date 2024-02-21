@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "StockApp! - Página Inicial",
-  description: "StockControl App - Aplicação para controle de estoque.",
+  title: "StockApp! - Estoque",
+  description: "StockApp! - Aplicação para controle de estoque.",
 };
 
 export default function EstoqueLayout({

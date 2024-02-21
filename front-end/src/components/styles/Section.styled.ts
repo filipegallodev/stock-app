@@ -4,15 +4,16 @@ export const Section = styled.section`
   max-width: 1200px;
   width: 100%;
   margin: 48px auto;
+  padding-bottom: 48px;
 `;
 
 export const SectionHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 36px 0px;
 `;
 
 export const SectionTitle = styled.h2`
   font-size: 1.75rem;
-  margin: 24px 0px;
 `;
