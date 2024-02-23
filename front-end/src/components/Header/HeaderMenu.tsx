@@ -12,11 +12,18 @@ const MenuItems = [
     name: "Estoque",
     route: "/estoque",
   },
+  {
+    name: "Clientes",
+    route: "/clientes",
+  },
 ];
 
 const HeaderMenu = () => {
   const routePathname = usePathname();
 
+  if (routePathname === "/") {
+    return null;
+  }
   return (
     <NavContainer>
       <NavList>
