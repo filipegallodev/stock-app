@@ -21,7 +21,7 @@ public class SaleService {
     }
 
     public void createSale(Sale sale) {
-        sale.setCreatedAt(LocalDateTime.now(ZoneId.of("GMT+3")));
+        sale.setCreatedAt(LocalDateTime.now(ZoneId.of("UTC-3")));
         saleRepository.save(sale);
     }
 

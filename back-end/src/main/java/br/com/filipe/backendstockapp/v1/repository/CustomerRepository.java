@@ -9,7 +9,16 @@ import org.springframework.stereotype.Repository;
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
     @Query(nativeQuery = true, value = """
-                                        SELECT ID, USERNAME, NAME, PASSWORD_HASH
+                                        SELECT ID,
+                                               USERNAME,
+                                               PASSWORD_HASH,
+                                               FIRST_NAME,
+                                               LAST_NAME,
+                                               PHONE_NUMBER,
+                                               PURCHASE_QUANTITY,
+                                               CREATED_AT,
+                                               LAST_LOGIN,
+                                               LAST_PURCHASE
                                         FROM CUSTOMER
                                         WHERE USERNAME = :username
                                         """)
