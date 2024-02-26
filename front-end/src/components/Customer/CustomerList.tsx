@@ -3,6 +3,7 @@ import { Section, SectionHeader, SectionTitle } from "../styles/Section.styled";
 import styled from "styled-components";
 import CustomerCard from "./CustomerCard";
 import { getCustomerList } from "@/functions/Customer";
+import { ReloadButton } from "../styles/Button.styled";
 
 const CustomerList = () => {
   const [list, setList] = useState<Array<Customer>>([]);
@@ -22,6 +23,7 @@ const CustomerList = () => {
     <Section className="animeLeft">
       <SectionHeader>
         <SectionTitle>Lista de Clientes</SectionTitle>
+        <ReloadButton onClick={getCustomers}>Atualizar</ReloadButton>
       </SectionHeader>
       {list?.length > 0 ? (
         <List>
@@ -31,7 +33,7 @@ const CustomerList = () => {
         </List>
       ) : (
         <div>
-          <p>Nenhum produto encontrado.</p>
+          <p>Nenhum cliente encontrado.</p>
         </div>
       )}
     </Section>
