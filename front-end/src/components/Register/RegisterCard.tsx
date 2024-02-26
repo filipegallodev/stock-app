@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { loginUser } from "@/functions/Authentication";
+import React, { MouseEventHandler, useState } from "react";
 import {
   FormContainer,
   FormTitle,
@@ -18,7 +16,7 @@ const RegisterCard = () => {
   });
   const [warning, setWarning] = useState("");
 
-  async function realizeRegistration(event: MouseEvent) {
+  async function realizeRegistration(event: React.MouseEvent) {
     event.preventDefault();
     if (!verifyIfFieldsHaveContent()) return;
   }

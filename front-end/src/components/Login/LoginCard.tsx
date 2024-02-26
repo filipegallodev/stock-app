@@ -21,7 +21,7 @@ const LoginCard = () => {
     if (logged) router.push("/home");
   }, [logged, router]);
 
-  async function realizeLogin(event: MouseEvent) {
+  async function realizeLogin(event: React.MouseEvent) {
     event.preventDefault();
     if (!verifyIfFieldsHaveContent()) return;
     setLogged(await loginUser(login));
