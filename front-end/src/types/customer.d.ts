@@ -1,9 +1,12 @@
 type Customer = {
   id: string;
-  name: string;
+  username: string;
+  password: string;
+  firstName: string;
+  lastName: string;
   phoneNumber: string;
   purchaseQuantity: number;
-  lastPurchase: Date;
-  lastLogin: Date;
   createdAt: Date;
+  lastLogin: Date;
+  lastPurchase: Date;
 };

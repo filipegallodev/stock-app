@@ -11,30 +11,38 @@ const CustomerCard = ({ customer }: Props) => {
       <Container>
         <Content>
           <CustomerHeader>
-            <CustomerName>{customer.name}</CustomerName>
-            <CustomerPhoneNumber>{customer.phoneNumber}</CustomerPhoneNumber>
+            <CustomerName>
+              {customer.firstName + " " + customer.lastName}
+            </CustomerName>
+            {customer.phoneNumber ? (
+              <CustomerPhoneNumber>{customer.phoneNumber}</CustomerPhoneNumber>
+            ) : null}
           </CustomerHeader>
           <CustomerBody>
             <CustomerDescription>
-              <div>
-                Entrou pela última vez em{" "}
-                {customer.lastLogin.toLocaleDateString()}
-              </div>
-              <div>
-                Data da última compra:{" "}
-                {customer.lastPurchase.toLocaleDateString()}
-              </div>
-              <div>Criado em {customer.createdAt.toLocaleDateString()}</div>
+              <p>Criado em {customer.createdAt.toLocaleDateString()}</p>
+              {customer.lastPurchase ? (
+                <p>
+                  Entrou pela última vez em{" "}
+                  {customer.lastLogin.toLocaleDateString()}
+                </p>
+              ) : null}
+              {customer.lastPurchase ? (
+                <p>
+                  Data da última compra:{" "}
+                  {customer.lastPurchase.toLocaleDateString()}
+                </p>
+              ) : null}
             </CustomerDescription>
           </CustomerBody>
         </Content>
       </Container>
-      <StockButton>WhatsApp</StockButton>
+      {customer.phoneNumber ? <StockButton>WhatsApp</StockButton> : null}
     </Card>
   );
 };
 
-const Card = styled.div`
+const Card = styled.li`
   box-shadow: 0px 0px 4px 2px #00000025;
   border-radius: 10px;
   overflow: hidden;
@@ -44,8 +52,8 @@ const Card = styled.div`
   justify-content: space-between;
 `;
 
-const Container = styled.li`
-  width: 90%;
+const Container = styled.div`
+  width: 100%;
   height: 120px;
   display: flex;
   align-items: center;
@@ -87,12 +95,13 @@ const CustomerPhoneNumber = styled.span`
 
 const CustomerBody = styled.div``;
 
-const CustomerDescription = styled.p`
+const CustomerDescription = styled.div`
   color: #555;
   font-size: 0.875rem;
 `;
 
 const StockButton = styled.button`
+  width: 13.5%;
   background-color: #15da35;
   border: none;
   height: 120px;

@@ -47,7 +47,7 @@ function verifyIfIsAProduct(data: any): Array<Product> | null {
   if (!(data instanceof Array)) {
     return null;
   }
-  const listProduct = new Array<Product>();
-  data.map((content) => listProduct.push(content));
-  return listProduct;
+  const productList = new Array<Product>();
+  data.map((content) => productList.push(content));
+  return productList;
 }
