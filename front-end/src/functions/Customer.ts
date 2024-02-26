@@ -2,7 +2,7 @@ export async function getCustomerList(): Promise<Customer[] | undefined> {
   let error = false;
   let data;
   try {
-    const response = await fetch("http://localhost:8080/customer/all", {
+    const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/customer/all", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -34,9 +34,7 @@ function verifyIfIsACustomer(data: any): Array<Customer> | null {
   return customerList;
 }
 
-function fixDateToJavaScriptDate(
-  customers: Array<Customer>
-): Array<Customer> {
+function fixDateToJavaScriptDate(customers: Array<Customer>): Array<Customer> {
   return customers.map((customer) => {
     customer.createdAt = new Date(customer.createdAt);
     if (customer.lastLogin != null) {

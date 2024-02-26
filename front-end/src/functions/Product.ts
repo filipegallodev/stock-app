@@ -2,7 +2,7 @@ export async function createProduct(product: Product) {
   let error = false;
   let data;
   try {
-    const response = await fetch("http://localhost:8080/product/create", {
+    const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/product/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,7 +21,7 @@ export async function getProductList(): Promise<Product[] | undefined> {
   let error = false;
   let data;
   try {
-    const response = await fetch("http://localhost:8080/product/list", {
+    const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/product/list", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
