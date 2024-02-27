@@ -4,11 +4,12 @@ import br.com.filipe.backendstockapp.v1.model.Sale;
 import org.springframework.beans.BeanUtils;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public class SaleDTO {
 
     private Long id;
-    private String customer;
+    private UUID customerId;
     private Double totalPrice;
     private LocalDateTime createdAt;
 
@@ -27,12 +28,12 @@ public class SaleDTO {
         this.id = id;
     }
 
-    public String getCustomer() {
-        return customer;
+    public UUID getCustomer() {
+        return customerId;
     }
 
-    public void setCustomer(String customer) {
-        this.customer = customer;
+    public void setCustomer(UUID customerId) {
+        this.customerId = customerId;
     }
 
     public Double getTotalPrice() {

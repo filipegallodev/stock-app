@@ -3,6 +3,7 @@ package br.com.filipe.backendstockapp.v1.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "sale")
@@ -12,7 +13,8 @@ public class Sale {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String customer;
+    @Column(name = "customer_id")
+    private UUID customerId;
 
     @Column(name = "total_price")
     private Double totalPrice;
@@ -23,8 +25,8 @@ public class Sale {
     public Sale() {
     }
 
-    public Sale(String customer, Double totalPrice, LocalDateTime createdAt) {
-        this.customer = customer;
+    public Sale(UUID customerId, Double totalPrice, LocalDateTime createdAt) {
+        this.customerId = customerId;
         this.totalPrice = totalPrice;
         this.createdAt = createdAt;
     }
@@ -37,12 +39,12 @@ public class Sale {
         this.id = id;
     }
 
-    public String getCustomer() {
-        return customer;
+    public UUID getCustomer() {
+        return customerId;
     }
 
-    public void setCustomer(String customer) {
-        this.customer = customer;
+    public void setCustomer(UUID customerId) {
+        this.customerId = customerId;
     }
 
     public Double getTotalPrice() {
