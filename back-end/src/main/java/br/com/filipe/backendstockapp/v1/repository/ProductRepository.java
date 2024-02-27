@@ -11,14 +11,14 @@ import java.util.Optional;
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query(nativeQuery = true, value = """
-                                        SELECT ID, CUSTOM_ID, NAME, AMOUNT
+                                        SELECT ID, CUSTOM_ID, NAME, AMOUNT, PRICE
                                         FROM PRODUCT
                                         WHERE CUSTOM_ID = :customId
                                         """)
     Optional<Product> findByCustomId(String customId);
 
     @Query(nativeQuery = true, value = """
-                                        SELECT ID, CUSTOM_ID, NAME, AMOUNT
+                                        SELECT ID, CUSTOM_ID, NAME, AMOUNT, PRICE
                                         FROM PRODUCT
                                         WHERE NAME = :name
                                         """)

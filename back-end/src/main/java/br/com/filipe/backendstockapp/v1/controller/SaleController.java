@@ -1,13 +1,14 @@
 package br.com.filipe.backendstockapp.v1.controller;
 
 import br.com.filipe.backendstockapp.v1.dto.SaleDTO;
-import br.com.filipe.backendstockapp.v1.model.Sale;
+import br.com.filipe.backendstockapp.v1.model.SaleProduct;
 import br.com.filipe.backendstockapp.v1.service.SaleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(value = "/sale")
@@ -20,8 +21,8 @@ public class SaleController {
     }
 
     @PostMapping
-    public ResponseEntity<HttpStatus> register(@RequestBody Sale sale) {
-        saleService.createSale(sale);
+    public ResponseEntity<HttpStatus> create(@RequestBody List<SaleProduct> saleProducts, @RequestHeader("customer_id") UUID customerId) {
+        saleService.createSale(saleProducts, customerId);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 

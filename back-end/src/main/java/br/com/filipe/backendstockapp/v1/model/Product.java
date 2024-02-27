@@ -16,14 +16,16 @@ public class Product {
     private String customId;
     private String name;
     private Integer amount;
+    private Double price;
 
     public Product() {
     }
 
-    public Product(String customId, String name, Integer amount) {
+    public Product(String customId, String name, Integer amount, Double price) {
         this.customId = customId;
         this.name = name;
         this.amount = amount;
+        this.price = price;
     }
 
     public UUID getId() {
@@ -56,5 +58,13 @@ public class Product {
 
     public void setAmount(Integer amount) {
         this.amount = amount;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

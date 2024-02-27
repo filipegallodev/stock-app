@@ -11,6 +11,7 @@ public class ProductDTO {
     private String customId;
     private String name;
     private Integer amount;
+    private Double price;
 
     public ProductDTO() {
     }
@@ -49,5 +50,13 @@ public class ProductDTO {
 
     public void setAmount(Integer amount) {
         this.amount = amount;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

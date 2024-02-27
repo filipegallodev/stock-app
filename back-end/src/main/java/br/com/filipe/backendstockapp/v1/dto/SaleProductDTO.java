@@ -7,7 +7,7 @@ public class SaleProductDTO {
 
     private Long id;
     private Long saleId;
-    private String productId;
+    private String productCustomId;
     private Integer amount;
 
     public SaleProductDTO() {
@@ -34,11 +34,11 @@ public class SaleProductDTO {
     }
 
     public String getProductId() {
-        return productId;
+        return productCustomId;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public void setProductId(String productCustomId) {
+        this.productCustomId = productCustomId;
     }
 
     public Integer getAmount() {
