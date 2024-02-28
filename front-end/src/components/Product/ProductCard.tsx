@@ -96,7 +96,7 @@ const StockButton = styled.button`
   font-size: 1rem;
   text-transform: uppercase;
   color: #f5f5f5;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   transition: 0.1s;
   &:hover {

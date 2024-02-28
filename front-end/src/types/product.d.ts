@@ -3,4 +3,5 @@ type Product = {
   customId: string;
   name: string;
   amount: number;
+  price: number;
 };

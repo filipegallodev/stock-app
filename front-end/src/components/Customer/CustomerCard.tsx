@@ -83,7 +83,7 @@ const CustomerName = styled.p`
 `;
 
 const CustomerPhoneNumber = styled.span`
-  background-color: #333;
+  background-color: #555;
   width: 160px;
   padding: 6px;
   border-radius: 6px;

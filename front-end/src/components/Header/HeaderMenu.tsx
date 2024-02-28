@@ -9,6 +9,10 @@ const MenuItems = [
     route: "/home",
   },
   {
+    name: "Vendas",
+    route: "/vendas",
+  },
+  {
     name: "Estoque",
     route: "/estoque",
   },
