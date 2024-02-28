@@ -53,7 +53,10 @@ const ProductCreate = () => {
     type: string
   ) {
     if (type === "custom-id") {
-      return setProduct({ ...product, customId: event.target.value });
+      return setProduct({
+        ...product,
+        customId: event.target.value.toLocaleLowerCase(),
+      });
     }
     if (type === "name") {
       return setProduct({ ...product, name: event.target.value });
