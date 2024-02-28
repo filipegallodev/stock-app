@@ -14,6 +14,7 @@ const defaultProductValues = {
   customId: "",
   name: "",
   amount: 0,
+  price: 0.0,
 };
 
 const ProductCreate = () => {
@@ -39,6 +40,10 @@ const ProductCreate = () => {
       setWarning("Preencha a quantidade!");
       return false;
     }
+    if (product.price === null) {
+      setWarning("Preencha o preço!");
+      return false;
+    }
     setWarning("");
     return true;
   }
@@ -56,6 +61,9 @@ const ProductCreate = () => {
     if (type === "amount" && event.target.value) {
       return setProduct({ ...product, amount: Number(event.target.value) });
     }
+    if (type === "price" && event.target.value) {
+      return setProduct({ ...product, price: Number(event.target.value) });
+    }
   }
 
   return (
@@ -67,6 +75,7 @@ const ProductCreate = () => {
         <InputBox>
           <StyledLabel htmlFor="custom-id">ID</StyledLabel>
           <StyledInput
+            maxLength={10}
             placeholder="teclado-xyz"
             id="custom-id"
             value={product.customId}
@@ -76,6 +85,7 @@ const ProductCreate = () => {
         <InputBox>
           <StyledLabel htmlFor="name">Nome</StyledLabel>
           <StyledInput
+            maxLength={200}
             placeholder="Teclado Gamer XYZ"
             id="name"
             value={product.name}
@@ -89,6 +99,15 @@ const ProductCreate = () => {
             value={product.amount}
             type="number"
             onChange={(event) => assignProductValue(event, "amount")}
+          />
+        </InputBox>
+        <InputBox>
+          <StyledLabel htmlFor="price">Preço unitário</StyledLabel>
+          <StyledInput
+            id="price"
+            value={product.price}
+            type="number"
+            onChange={(event) => assignProductValue(event, "price")}
           />
         </InputBox>
       </StyledForm>
