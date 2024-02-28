@@ -47,3 +47,21 @@ export const ReloadButton = styled.button`
     box-shadow: 0px 0px 0px 2px #f50;
   }
 `;
+
+export const BackButton = styled.button`
+  background-color: #fff;
+  padding: 8px 24px;
+  border: none;
+  box-shadow: 0px 0px 0px 2px #00000050;
+  border-radius: 10px;
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: 0.15s;
+  &:hover {
+    color: #f70;
+    box-shadow: 0px 0px 0px 2px #f70;
+  }
+  &:active {
+    box-shadow: 0px 0px 0px 2px #f50;
+  }
+`;

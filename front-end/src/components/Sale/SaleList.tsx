@@ -23,18 +23,18 @@ const SaleList = () => {
   return (
     <Section className="animeLeft">
       <SectionHeader>
-        <SectionTitle>Lista de Clientes</SectionTitle>
+        <SectionTitle>Histórico de Vendas</SectionTitle>
         <ReloadButton onClick={getSales}>Atualizar</ReloadButton>
       </SectionHeader>
       {list?.length > 0 ? (
-        <List>
+        <List className="animeLeft">
           {list.map((sale) => {
             return <SaleCard sale={sale} key={sale.id} />;
           })}
         </List>
       ) : (
         <div>
-          <p>Nenhum cliente encontrado.</p>
+          <p>Nenhuma venda encontrada.</p>
         </div>
       )}
     </Section>

@@ -1,5 +1,6 @@
 import { Sale } from "@/types/sale";
-import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import React from "react";
 import styled from "styled-components";
 
 type Props = {
@@ -7,36 +8,40 @@ type Props = {
 };
 
 const SaleCard = ({ sale }: Props) => {
-  const [cardStatus, setCardStatus] = useState(false);
+  const router = useRouter();
 
   return (
-    <Card className={"animeLeft " + cardStatus ? "active" : ""}>
-      <Container>
-        <SaleHeaderInfo>
-          <SaleNumber>Venda Nº {sale.id}</SaleNumber>
-          <SaleCreatedAt>
-            Venda em {sale.createdAt.toLocaleDateString()}
-          </SaleCreatedAt>
-        </SaleHeaderInfo>
-      </Container>
-      <MoreInfoButton onClick={() => setCardStatus(!cardStatus)}>
-        Informações
-      </MoreInfoButton>
+    <Card>
+      <CardHeaderContainer>
+        <Container>
+          <SaleHeaderInfo>
+            <SaleNumber>Venda Nº {sale.id}</SaleNumber>
+            <SaleCreatedAt>
+              Venda em {sale.createdAt.toLocaleDateString()}
+            </SaleCreatedAt>
+          </SaleHeaderInfo>
+        </Container>
+        <MoreInfoButton onClick={() => router.push("/vendas/" + sale.id)}>
+          Acessar Venda
+        </MoreInfoButton>
+      </CardHeaderContainer>
     </Card>
   );
 };
 
 const Card = styled.li`
-  box-shadow: 0px 0px 4px 2px #00000025;
+  width: 100%;
   border-radius: 10px;
+  box-shadow: 0px 0px 4px 2px #00000025;
   overflow: hidden;
+  height: auto;
+`;
+
+const CardHeaderContainer = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  &.active {
-    border-radius: 10px 10px 0px 0px;
-  }
 `;
 
 const Container = styled.div`
@@ -69,7 +74,7 @@ const SaleCreatedAt = styled.span`
 `;
 
 const MoreInfoButton = styled.button`
-  width: 13.5%;
+  width: 20%;
   background-color: #1d4ed3;
   border: none;
   height: 60px;
