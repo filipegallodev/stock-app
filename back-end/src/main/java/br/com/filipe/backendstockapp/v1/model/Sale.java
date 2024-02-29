@@ -39,11 +39,11 @@ public class Sale {
         this.id = id;
     }
 
-    public UUID getCustomer() {
+    public UUID getCustomerId() {
         return customerId;
     }
 
-    public void setCustomer(UUID customerId) {
+    public void setCustomerId(UUID customerId) {
         this.customerId = customerId;
     }
 

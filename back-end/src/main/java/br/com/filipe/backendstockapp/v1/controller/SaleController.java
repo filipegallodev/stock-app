@@ -1,5 +1,6 @@
 package br.com.filipe.backendstockapp.v1.controller;
 
+import br.com.filipe.backendstockapp.v1.dto.SaleCompleteInfoDTO;
 import br.com.filipe.backendstockapp.v1.dto.SaleDTO;
 import br.com.filipe.backendstockapp.v1.model.SaleProduct;
 import br.com.filipe.backendstockapp.v1.service.SaleService;
@@ -33,8 +34,8 @@ public class SaleController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<SaleDTO> findProductById(@PathVariable Long id) {
-        SaleDTO result = saleService.findById(id);
+    public ResponseEntity<SaleCompleteInfoDTO> findProductById(@PathVariable Long id) {
+        SaleCompleteInfoDTO result = saleService.findById(id);
         return ResponseEntity.ok(result);
     }
 }
