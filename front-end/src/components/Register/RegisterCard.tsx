@@ -47,7 +47,7 @@ const RegisterCard = () => {
   }
 
   return (
-    <FormContainer className="animeLeft">
+    <FormContainer>
       <FormTitle>Cadastre-se!</FormTitle>
       <StyledForm>
         <InputBox>
