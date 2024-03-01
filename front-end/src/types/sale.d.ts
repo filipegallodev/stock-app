@@ -13,3 +13,9 @@ type SaleProduct = {
   productCustomId: string;
   amount: number;
 };
+
+type SaleInformation = {
+  sale: Sale;
+  customer: Customer;
+  productList: Array<Product>;
+};

@@ -60,7 +60,7 @@ const Container = styled.div`
   justify-content: space-between;
   flex-direction: column;
   background-color: #fff;
-  padding: 8px;
+  padding: 16px;
 `;
 
 const Content = styled.div`
