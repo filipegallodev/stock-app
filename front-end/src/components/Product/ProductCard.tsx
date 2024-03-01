@@ -24,27 +24,26 @@ const ProductCard = ({ product }: Props) => {
           </ProductBody>
         </Content>
       </Container>
-      <StockButton>Estoque</StockButton>
+      <StockButton>Editar</StockButton>
     </Card>
   );
 };
 
-const Card = styled.div`
+const Card = styled.li`
   box-shadow: 0px 0px 4px 2px #00000025;
   border-radius: 10px;
   overflow: hidden;
-  max-width: 260px;
+  max-width: 380px;
   width: 100%;
 `;
 
-const Container = styled.li`
-  height: 300px;
+const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
   background-color: #fff;
-  padding: 8px;
+  padding: 16px;
 `;
 
 const Content = styled.div`
@@ -55,13 +54,13 @@ const Content = styled.div`
 const ProductHeader = styled.div`
   width: 100%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   margin-bottom: 8px;
 `;
 
 const ProductID = styled.span`
   font-size: 0.625rem;
+  margin-bottom: 8px;
 `;
 
 const ProductName = styled.p`

@@ -42,10 +42,17 @@ const ProductList = () => {
 
 const List = styled.ul`
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 24px;
+  justify-content: space-between;
+  gap: 16px;
 `;
+
+// const List = styled.ul`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   flex-wrap: wrap;
+//   gap: 24px;
+// `;
 
 export default ProductList;

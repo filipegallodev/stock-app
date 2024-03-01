@@ -11,6 +11,7 @@ import { useParams, useRouter } from "next/navigation";
 import { getSaleInformation } from "@/functions/Sale";
 import { SaleInformation } from "@/types/sale";
 import SaleProductList from "../SaleProduct/SaleProductList";
+import styled from "styled-components";
 
 const SaleInformation = () => {
   const router = useRouter();
@@ -37,19 +38,23 @@ const SaleInformation = () => {
         <div>
           <SectionContent>
             <SectionCaption>Dados principais</SectionCaption>
-            <p>
-              Realizada em {new Date(data.sale.createdAt).toLocaleDateString()}
-            </p>
-            <p>
-              Cliente: {data.customer.firstName + " " + data.customer.lastName}
-            </p>
-            <p>
-              Valor Total:{" "}
-              {data.sale.totalPrice.toLocaleString("pt-BR", {
-                style: "currency",
-                currency: "BRL",
-              })}
-            </p>
+            <InfoContainer>
+              <p>
+                Realizada em{" "}
+                {new Date(data.sale.createdAt).toLocaleDateString()}
+              </p>
+              <p>
+                Cliente:{" "}
+                {data.customer.firstName + " " + data.customer.lastName}
+              </p>
+              <p>
+                Valor Total:{" "}
+                {data.sale.totalPrice.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })}
+              </p>
+            </InfoContainer>
           </SectionContent>
           <SectionContent>
             <SectionCaption>Produtos adquiridos</SectionCaption>
@@ -70,5 +75,12 @@ const SaleInformation = () => {
     </Section>
   );
 };
+
+const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 1.0125rem;
+`;
 
 export default SaleInformation;
