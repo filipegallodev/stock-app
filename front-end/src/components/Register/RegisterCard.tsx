@@ -8,20 +8,32 @@ import {
   Warning,
 } from "../styles/Form.styled";
 import { StyledButton } from "../styles/Button.styled";
+import { createUser } from "@/functions/Authentication";
+
+const registerDefault = {
+  name: "",
+  username: "",
+  password: "",
+};
 
 const RegisterCard = () => {
-  const [register, setRegister] = useState<Register>({
-    username: "",
-    password: "",
-  });
+  const [register, setRegister] = useState<User>(registerDefault);
   const [warning, setWarning] = useState("");
 
   async function realizeRegistration(event: React.MouseEvent) {
     event.preventDefault();
     if (!verifyIfFieldsHaveContent()) return;
+    const response = await createUser(register);
+    if (response) {
+      setRegister(registerDefault);
+    }
   }
 
   function verifyIfFieldsHaveContent(): boolean {
+    if (register.name === "") {
+      setWarning("Preencha seu nome!");
+      return false;
+    }
     if (register.username === "") {
       setWarning("Preencha o usuário!");
       return false;
@@ -38,6 +50,9 @@ const RegisterCard = () => {
     event: React.ChangeEvent<HTMLInputElement>,
     type: string
   ) {
+    if (type === "name") {
+      return setRegister({ ...register, name: event.target.value });
+    }
     if (type === "username") {
       return setRegister({ ...register, username: event.target.value });
     }
@@ -50,6 +65,14 @@ const RegisterCard = () => {
     <FormContainer>
       <FormTitle>Cadastre-se!</FormTitle>
       <StyledForm>
+        <InputBox>
+          <StyledInput
+            id="name"
+            value={register.name}
+            onChange={(event) => assignRegisterValue(event, "name")}
+            placeholder="Nome completo"
+          />
+        </InputBox>
         <InputBox>
           <StyledInput
             id="username"

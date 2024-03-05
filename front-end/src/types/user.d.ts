@@ -3,7 +3,6 @@ type Login = {
   password: string;
 };
 
-type Register = {
-  username: string;
-  password: string;
+interface User extends Login {
+  name: string;
 };
