@@ -21,11 +21,13 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void registerUser(User user) {
+    public UserDTO registerUser(User user) {
         User result = userRepository.findByUsername(user.getUsername());
         userExists(result, "register");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
+        User userCreated = userRepository.save(user);
+        userCreated.setPassword(null);
+        return new UserDTO(userCreated);
     }
 
     @Transactional(readOnly = true)
