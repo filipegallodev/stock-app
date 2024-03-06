@@ -1,5 +1,5 @@
 export async function loginUser(login: Login): Promise<boolean> {
-  let error = false;
+  let hasError = false;
   try {
     const response = await fetch(
       process.env.NEXT_PUBLIC_API_URL + "/user/login",
@@ -11,19 +11,21 @@ export async function loginUser(login: Login): Promise<boolean> {
         body: JSON.stringify(login),
       }
     );
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.message);
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message);
+    }
   } catch (err) {
     if (err instanceof Error) console.log(err.message);
-    error = true;
+    hasError = true;
   } finally {
-    if (error) return false;
+    if (hasError) return false;
     return true;
   }
 }
 
 export async function createUser(register: User): Promise<boolean> {
-  let error = false;
+  let hasError = false;
   try {
     const response = await fetch(
       process.env.NEXT_PUBLIC_API_URL + "/user/register",
@@ -35,13 +37,15 @@ export async function createUser(register: User): Promise<boolean> {
         body: JSON.stringify(register),
       }
     );
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.message);
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message);
+    }
   } catch (err) {
     if (err instanceof Error) console.log(err.message);
-    error = true;
+    hasError = true;
   } finally {
-    if (error) return false;
+    if (hasError) return false;
     return true;
   }
 }
