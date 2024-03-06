@@ -18,14 +18,14 @@ public class UserController {
     }
 
     @PostMapping(value = "/register")
-    public ResponseEntity<UserDTO> register(@RequestBody User user) {
-        UserDTO userCreated = userService.registerUser(user);
-        return ResponseEntity.status(HttpStatus.CREATED).body(userCreated);
+    public ResponseEntity<HttpStatus> register(@RequestBody User user) {
+        userService.register(user);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PostMapping(value = "/login")
-    public ResponseEntity<UserDTO> login(@RequestBody User user) {
-        UserDTO userDTO = userService.loginUser(user);
-        return ResponseEntity.status(HttpStatus.OK).body(userDTO);
+    public ResponseEntity<HttpStatus> login(@RequestBody User user) {
+        userService.login(user);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

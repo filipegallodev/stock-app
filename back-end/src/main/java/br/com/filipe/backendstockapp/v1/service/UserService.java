@@ -10,6 +10,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -21,33 +23,31 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public UserDTO registerUser(User user) {
-        User result = userRepository.findByUsername(user.getUsername());
-        userExists(result, "register");
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        User userCreated = userRepository.save(user);
-        userCreated.setPassword(null);
-        return new UserDTO(userCreated);
+    public void register(User user) {
+        verifyIfUsernameAlreadyExists(user);
+        user = encodeUserPassword(user);
+        userRepository.save(user);
     }
 
     @Transactional(readOnly = true)
-    public UserDTO loginUser(User user) {
-        User result = userRepository.findByUsername(user.getUsername());
-        userExists(result, "login");
-        passwordMatches(user, result);
-        return new UserDTO(result);
+    public void login(User user) {
+        User result = userRepository.findByUsername(user.getUsername()).orElseThrow(UserNotFoundException::new);
+        verifyIfPasswordMatches(user, result);
     }
 
-    public void userExists(User result, String transactionType) {
-        if (result == null && transactionType.equals("login")) {
-            throw new UserNotFoundException();
-        }
-        if (result != null && transactionType.equals("register")) {
+    public void verifyIfUsernameAlreadyExists(User user) {
+        Optional<User> result = userRepository.findByUsername(user.getUsername());
+        if (result.isPresent()) {
             throw new UserAlreadyExistsException();
         }
     }
 
-    public void passwordMatches(User user, User result) {
+    public User encodeUserPassword(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return user;
+    }
+
+    public void verifyIfPasswordMatches(User user, User result) {
         if (!passwordEncoder.matches(user.getPassword(), result.getPassword())) {
             throw new PasswordNotMatchesException();
         }
