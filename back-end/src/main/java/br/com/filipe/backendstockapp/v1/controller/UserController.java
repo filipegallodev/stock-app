@@ -1,6 +1,5 @@
 package br.com.filipe.backendstockapp.v1.controller;
 
-import br.com.filipe.backendstockapp.v1.dto.UserDTO;
 import br.com.filipe.backendstockapp.v1.model.User;
 import br.com.filipe.backendstockapp.v1.service.UserService;
 import org.springframework.http.HttpStatus;

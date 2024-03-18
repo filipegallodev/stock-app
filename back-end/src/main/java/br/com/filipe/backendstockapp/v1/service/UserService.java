@@ -1,6 +1,5 @@
 package br.com.filipe.backendstockapp.v1.service;
 
-import br.com.filipe.backendstockapp.v1.dto.UserDTO;
 import br.com.filipe.backendstockapp.v1.exception.PasswordNotMatchesException;
 import br.com.filipe.backendstockapp.v1.exception.UserAlreadyExistsException;
 import br.com.filipe.backendstockapp.v1.exception.UserNotFoundException;
